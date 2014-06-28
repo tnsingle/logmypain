@@ -10,6 +10,10 @@ public class CalendarUtil {
 		return cal.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.US)+" " + cal.get(Calendar.DATE) + ", " + cal.get(Calendar.YEAR);
 	}
 	
+	public static String getShortDateDisplay(Calendar cal){
+		return cal.getDisplayName(Calendar.MONTH, Calendar.SHORT, Locale.US)+" " + cal.get(Calendar.DATE);
+	}
+	
 	public static String getTimeDisplay(Calendar cal){
 		
 		SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm aa", Locale.getDefault());

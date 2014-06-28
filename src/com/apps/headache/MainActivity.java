@@ -1,5 +1,8 @@
 package com.apps.headache;
 
+import java.text.SimpleDateFormat;
+import java.util.Locale;
+
 import com.apps.headache.R;
 import com.apps.utils.CalendarUtil;
 import com.apps.utils.DatabaseHelper;
@@ -23,10 +26,12 @@ public class MainActivity extends Activity {
 	public View dialog;
 	public long Record_ID;
 	private DatabaseHelper db;
+	private boolean isRecordDialogClosing;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		isRecordDialogClosing = false;
 		setContentView(R.layout.activity_main);
 		db = new DatabaseHelper(this);
 		FrameLayout rootLayout = (FrameLayout)findViewById(android.R.id.content);
@@ -54,15 +59,18 @@ public class MainActivity extends Activity {
 		HeadacheRecord record = new HeadacheRecord();
 		
 		
-		String str = "Migraine recorded!<br/><b>";
 		record.setStartToNow();
-		str += CalendarUtil.getDateDisplay(record.getStart());
-		str += "<br/>" + CalendarUtil.getTimeDisplay(record.getStart())+"</b>";
+		String day = "";
+		String time = "";
+		day += CalendarUtil.getShortDateDisplay(record.getStart());
+		time += CalendarUtil.getTimeDisplay(record.getStart());
 		Record_ID = db.addRecord(record);
 		
 		
-		TextView message = (TextView)findViewById(R.id.recordDialogMessage);
-		message.setText(Html.fromHtml(str));
+		TextView dayTextView = (TextView)findViewById(R.id.recordDialogDay);
+		TextView timeTextView = (TextView)findViewById(R.id.recordDialogTime);
+		dayTextView.setText(day);
+		timeTextView.setText(time);
 		
 		showDialogAnimated(dialog);
 		
@@ -75,7 +83,7 @@ public class MainActivity extends Activity {
 	            //dialog.setVisibility(View.GONE);
 
 	            // OR HIDE IT USING ANIMATION
-	        	if(dialog.getVisibility() == View.VISIBLE)
+	        	if(dialog.getVisibility() == View.VISIBLE && !isRecordDialogClosing)
 	            hideDialogAnimated(dialog);
 
 	            // DONT use both lines at the same time :)
@@ -120,13 +128,16 @@ public class MainActivity extends Activity {
 	        @Override
 	        public void onAnimationEnd(Animation arg0) {
 	            v.setVisibility(View.GONE);
+	            isRecordDialogClosing = false;
 	        }
 
 	        @Override
 	        public void onAnimationRepeat(Animation arg0) { }
 
 	        @Override
-	        public void onAnimationStart(Animation arg0) { }
+	        public void onAnimationStart(Animation arg0) { 
+	        	isRecordDialogClosing = true;
+	        }
 
 	    });
 
