@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">LogMyPain</string>
+    <string name="action_settings">Settings</string>
+    <string name="button_headache">Quick Record Migraine</string>
+    <string name="button_cal">View Migraine Records</string>
+    <string name="title_activity_record_headache_now">Modify Headache Record</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_view_records">ViewRecordsActivity</string>
+    <string name="modify_title">Modify Headache Record</string>
+    <string name="modify_save_button">Save</string>
+    <string name="seekbar_intensity">Intensity</string>
+    <string name="title_activity_date_time">DateTimeActivity</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

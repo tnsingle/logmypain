@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/DialogSlideAnim"
+    android:id="@+id/recordNowContent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="#ccc"
+    android:layout_gravity="bottom"
+    android:padding="5dip"
+    android:gravity="center" >
+    
+<TextView 
+    
+    android:layout_height="wrap_content"
+    android:id="@+id/recordDialogMessage"
+     android:gravity="center"
+     android:layout_width="0dip" android:layout_weight=".4"/>
+
+<LinearLayout 
+    
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" 
+    android:layout_width="0dip" android:layout_weight=".6">
+    <Button 
+    
+    android:layout_height="wrap_content"
+    android:background="@drawable/primary_button"
+    android:clickable="true"
+    android:onClick="onClickEdit"
+    android:text="Edit"
+    android:layout_width="0dip" android:layout_weight=".6"
+    android:layout_marginTop="2dp"
+    android:layout_marginBottom="2dp"
+    android:layout_marginLeft="2dp"
+    android:layout_marginRight="2dp"/>
+    <Button 
+    
+    android:layout_height="wrap_content"
+    android:background="@drawable/secondary_button"
+    android:clickable="true"
+    android:onClick="onClickUndo"
+    android:text="Undo"
+    android:layout_width="0dip" android:layout_weight=".4"
+    android:layout_marginTop="2dp"
+    android:layout_marginBottom="2dp"
+    android:layout_marginLeft="2dp"
+    android:layout_marginRight="2dp"/>
+
+</LinearLayout>
+</LinearLayout>
