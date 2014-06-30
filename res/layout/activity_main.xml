@@ -60,4 +60,18 @@
     android:paddingRight="5dip"
     android:paddingTop="10dip"
         android:background="@drawable/main_buttons" />
+<Button
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="View Calendar"
+        android:onClick="viewCalendar"
+        android:layout_marginTop="0dp"
+    android:layout_marginBottom="0dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:paddingBottom="10dip"
+    android:paddingLeft="5dip"
+    android:paddingRight="5dip"
+    android:paddingTop="10dip"
+        android:background="@drawable/main_buttons" />
 </LinearLayout>

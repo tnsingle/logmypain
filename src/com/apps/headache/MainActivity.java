@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Locale;
 
 import com.apps.headache.R;
+import com.apps.headache.record.ModifyRecordActivity;
 import com.apps.utils.CalendarUtil;
 import com.apps.utils.DatabaseHelper;
 import com.apps.utils.HeadacheRecord;
@@ -113,6 +114,12 @@ public class MainActivity extends Activity {
 	/** Called when the user clicks the Send button */
 	public void viewRecords(View view) {
 		Intent intent = new Intent(this, ViewRecordsActivity.class);
+		
+	    startActivity(intent);
+	}
+	
+	public void viewCalendar(View view) {
+		Intent intent = new Intent(this, ViewCalendarActivity.class);
 		
 	    startActivity(intent);
 	}

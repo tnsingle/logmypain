@@ -27,10 +27,15 @@ public class DateTimeDialogFragment extends DialogFragment {
 	    
 	    // Get the layout inflater
 	    final View view = LayoutInflater.from(getActivity()).inflate(R.layout.dialog_date_time, null);
-	    
 	    final DatePicker date = (DatePicker)view.findViewById(R.id.datePicker);
 	    final TimePicker time = (TimePicker)view.findViewById(R.id.timePicker);
+	    Calendar cal = Calendar.getInstance();
 	    
+	    //date.setMaxDate(cal.getTimeInMillis());
+	    //long minDate = getArguments().getLong("minDate");
+	    //if (minDate != 0L){
+	    //	date.setMinDate(minDate);
+	    //}
 	    date.updateDate(getArguments().getInt("year"),getArguments().getInt("month"),getArguments().getInt("day"));
 	    time.setCurrentHour(getArguments().getInt("hour"));
 	    time.setCurrentMinute(getArguments().getInt("minute"));

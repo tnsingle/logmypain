@@ -860,10 +860,15 @@ containing a value of this type.
         public static final int abc_split_action_bar_is_narrow=0x7f060002;
     }
     public static final class color {
-        public static final int abc_search_url_text_holo=0x7f070003;
+        public static final int abc_search_url_text_holo=0x7f070008;
         public static final int abc_search_url_text_normal=0x7f070000;
         public static final int abc_search_url_text_pressed=0x7f070002;
         public static final int abc_search_url_text_selected=0x7f070001;
+        public static final int brand_pink=0x7f070003;
+        public static final int dark_grey=0x7f070004;
+        public static final int intensity_mild=0x7f070005;
+        public static final int intensity_mod=0x7f070006;
+        public static final int intensity_sev=0x7f070007;
     }
     public static final class dimen {
         /**  Default height of an action bar. 
@@ -1078,24 +1083,27 @@ containing a value of this type.
         public static final int abc_textfield_searchview_holo_light=0x7f020054;
         public static final int abc_textfield_searchview_right_holo_dark=0x7f020055;
         public static final int abc_textfield_searchview_right_holo_light=0x7f020056;
-        public static final int delete_button=0x7f020057;
-        public static final int delete_image_button=0x7f020058;
-        public static final int edit=0x7f020059;
-        public static final int edit_button=0x7f02005a;
-        public static final int flowers=0x7f02005b;
-        public static final int ic_action_edit=0x7f02005c;
-        public static final int ic_action_remove=0x7f02005d;
-        public static final int ic_launcher=0x7f02005e;
-        public static final int ic_launcher_logmypain=0x7f02005f;
-        public static final int ic_logo_logmypain=0x7f020060;
-        public static final int intensity_seekbar=0x7f020061;
-        public static final int main_buttons=0x7f020062;
-        public static final int mical_icon=0x7f020063;
-        public static final int primary_button=0x7f020064;
-        public static final int quick_button=0x7f020065;
-        public static final int secondary_button=0x7f020066;
-        public static final int trash=0x7f020067;
-        public static final int trash_focus=0x7f020068;
+        public static final int circle=0x7f020057;
+        public static final int delete_button=0x7f020058;
+        public static final int delete_image_button=0x7f020059;
+        public static final int edit=0x7f02005a;
+        public static final int edit_button=0x7f02005b;
+        public static final int flowers=0x7f02005c;
+        public static final int ic_action_edit=0x7f02005d;
+        public static final int ic_action_next_item_pink=0x7f02005e;
+        public static final int ic_action_previous_item_pink=0x7f02005f;
+        public static final int ic_action_remove=0x7f020060;
+        public static final int ic_launcher=0x7f020061;
+        public static final int ic_launcher_logmypain=0x7f020062;
+        public static final int ic_logo_logmypain=0x7f020063;
+        public static final int intensity_seekbar=0x7f020064;
+        public static final int main_buttons=0x7f020065;
+        public static final int mical_icon=0x7f020066;
+        public static final int primary_button=0x7f020067;
+        public static final int quick_button=0x7f020068;
+        public static final int secondary_button=0x7f020069;
+        public static final int trash=0x7f02006a;
+        public static final int trash_focus=0x7f02006b;
     }
     public static final class id {
         public static final int action_bar=0x7f05001c;
@@ -1109,16 +1117,23 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f050016;
         public static final int action_menu_presenter=0x7f050017;
         public static final int action_mode_close_button=0x7f050024;
-        public static final int action_settings=0x7f050057;
+        public static final int action_settings=0x7f05005e;
         public static final int activity_chooser_view_content=0x7f050025;
         public static final int always=0x7f05000b;
         public static final int beginning=0x7f050011;
-        public static final int button1=0x7f050053;
+        public static final int button1=0x7f05005a;
+        public static final int calendar=0x7f050051;
+        public static final int calendarGrid=0x7f050056;
+        public static final int calendarMonth=0x7f050053;
+        public static final int calendarNextButton=0x7f050055;
+        public static final int calendarPrevButton=0x7f050052;
+        public static final int calendarYear=0x7f050054;
+        public static final int calendar_day=0x7f050050;
         public static final int checkbox=0x7f05002d;
         public static final int collapseActionView=0x7f05000d;
         public static final int date=0x7f05004b;
-        public static final int datePicker=0x7f050051;
-        public static final int dateTimeSection=0x7f050050;
+        public static final int datePicker=0x7f050058;
+        public static final int dateTimeSection=0x7f050057;
         public static final int default_activity_button=0x7f050028;
         public static final int delViewButton=0x7f05004d;
         public static final int dialog=0x7f05000e;
@@ -1155,9 +1170,9 @@ containing a value of this type.
         public static final int progress_circular=0x7f050018;
         public static final int progress_horizontal=0x7f050019;
         public static final int radio=0x7f05002f;
-        public static final int recordDialogDay=0x7f050055;
-        public static final int recordDialogTime=0x7f050056;
-        public static final int recordNowContent=0x7f050054;
+        public static final int recordDialogDay=0x7f05005c;
+        public static final int recordDialogTime=0x7f05005d;
+        public static final int recordNowContent=0x7f05005b;
         public static final int search_badge=0x7f050032;
         public static final int search_bar=0x7f050031;
         public static final int search_button=0x7f050033;
@@ -1180,7 +1195,7 @@ containing a value of this type.
         public static final int startTime=0x7f050041;
         public static final int submit_area=0x7f050039;
         public static final int tabMode=0x7f050002;
-        public static final int timePicker=0x7f050052;
+        public static final int timePicker=0x7f050059;
         public static final int title=0x7f05002b;
         public static final int top_action_bar=0x7f050020;
         public static final int up=0x7f050021;
@@ -1240,10 +1255,12 @@ containing a value of this type.
         public static final int activity_main=0x7f030018;
         public static final int activity_modify_record=0x7f030019;
         public static final int activity_view_records=0x7f03001a;
-        public static final int dialog_date_time=0x7f03001b;
-        public static final int dialog_record_now=0x7f03001c;
-        public static final int listview_view_records=0x7f03001d;
-        public static final int support_simple_spinner_dropdown_item=0x7f03001e;
+        public static final int calendar_cell=0x7f03001b;
+        public static final int calendar_view=0x7f03001c;
+        public static final int dialog_date_time=0x7f03001d;
+        public static final int dialog_record_now=0x7f03001e;
+        public static final int listview_view_records=0x7f03001f;
+        public static final int support_simple_spinner_dropdown_item=0x7f030020;
     }
     public static final class menu {
         public static final int date_time=0x7f0c0000;
@@ -1326,6 +1343,8 @@ containing a value of this type.
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f0b008c;
+        public static final int CalendarNextButton=0x7f0b009a;
+        public static final int CalendarPrevButton=0x7f0b009b;
         public static final int ClickableText=0x7f0b0099;
         public static final int DeleteButton=0x7f0b0094;
         public static final int DeleteButtonSM=0x7f0b0096;

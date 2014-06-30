@@ -6,9 +6,10 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Locale;
 
-import com.apps.headache.ModifyRecordActivity;
 import com.apps.headache.R;
+import com.apps.headache.record.ModifyRecordActivity;
 import com.apps.utils.HeadacheRecord;
+
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;

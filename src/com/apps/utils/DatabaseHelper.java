@@ -1,5 +1,6 @@
 package com.apps.utils;
 
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -75,6 +76,28 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     	List<HeadacheRecord> recordList = new ArrayList<HeadacheRecord>();
         // Select All Query
         String selectQuery = "SELECT  * FROM " + DATABASE_TABLE_NAME + " order by Start_Date_Time DESC";
+ 
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+ 
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+            	recordList.add(getRecord(cursor));
+            } while (cursor.moveToNext());
+        }
+        //System.out.println("item count in DatabaseHelper: " + recordList.size());
+        // return contact list
+        return recordList;
+    }
+    
+    public List<HeadacheRecord> getAllRecordsByMonth(int month, int year){
+    	List<HeadacheRecord> recordList = new ArrayList<HeadacheRecord>();
+    	DecimalFormat formatter = new DecimalFormat("00");
+    	String monthFormatted = formatter.format(month);
+    	System.out.println("month: "+month);
+    	System.out.println("month formatted: "+monthFormatted);
+        String selectQuery = "SELECT  * FROM " + DATABASE_TABLE_NAME + " where strftime('%m',Start_Date_Time)='"+monthFormatted+"' AND strftime('%Y',Start_Date_Time) = '"+year+"'";
  
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
