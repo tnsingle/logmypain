@@ -2,6 +2,7 @@ Log My Pain
 =========
 
 A migraine tracking app for android
+http://www.logmypain.com/
 
 About
 ===
