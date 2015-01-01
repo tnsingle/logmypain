@@ -16,8 +16,8 @@ Features
 ===
 
 - Record migraine
--- Quick-record to avoid filling out a form. Records with current time.
--- Start, End, Intensity
+  - Quick-record to avoid filling out a form. Records with current time.
+  - Record start and end date/time, intensity
 - View migraine records
--- List view shows date, duration, and intensity by color
--- Calendar view gives visually representation of the migraines experienced for the month using colored markers based on intensity
+  - List view shows date, duration, and intensity by color
+  - Calendar view gives visually representation of the migraines experienced for the month using colored markers based on intensity
