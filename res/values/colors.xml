@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <color name="brand_pink">#FF007F</color>
-    <color name="dark_grey">#555555</color>
-    <color name="intensity_mild">#F4E216</color>
-    <color name="intensity_mod">#F9951E</color>
-    <color name="intensity_sev">#ED1521</color>
-</resources>
