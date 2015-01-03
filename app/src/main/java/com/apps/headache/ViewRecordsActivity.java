@@ -1,49 +1,72 @@
 package com.apps.headache;
 
-import com.apps.utils.DatabaseHelper;
-import com.apps.utils.ViewRecordsAdapter;
-import com.apps.headache.R;
-import com.apps.headache.R.layout;
-import android.os.Bundle;
-import android.app.ListActivity;
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBar.Tab;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 
-public class ViewRecordsActivity extends ListActivity {
-	private ViewRecordsAdapter rAdapter;
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.listview_view_records);
-		getActionBar().setDisplayHomeAsUpEnabled(true);
-		DatabaseHelper db = new DatabaseHelper(this);
-		rAdapter = new ViewRecordsAdapter(ViewRecordsActivity.this,
-                layout.activity_view_records, db.getAllRecords());
-		setListAdapter(rAdapter);
-	
-		
-	}
+import com.apps.logmypain_dev.ViewCalendarFragment;
+import com.apps.logmypain_dev.ViewListFragment;
+import com.apps.logmypain_dev.ViewRecordsTabListener;
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.view_records, menu);
-		return true;
-	}
-	
-	public void onClickDeleteRecord(View v){
-		rAdapter.deleteRecord(v);
-    
+public class ViewRecordsActivity
+        extends ActionBarActivity
+{
+    ActionBar.Tab calendarTab;
+    ActionBar.Tab listTab;
+    Fragment viewCalendarFragment = new ViewCalendarFragment();
+    Fragment viewListFragment = new ViewListFragment();
+
+    public void onBackPressed()
+    {
+        Intent localIntent = new Intent(this, MainActivity.class);
+        startActivity(localIntent);
+        localIntent.setFlags(67108864);
+        finish();
     }
-	
-	@Override
-	public void onBackPressed()
-	{
-	Intent mIntent= new Intent(this, MainActivity.class);
-	    startActivity(mIntent);
-	    mIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-	    finish();
-	}
 
+    protected void onCreate(Bundle paramBundle)
+    {
+        super.onCreate(paramBundle);
+        setContentView(R.layout.activity_view_records_tabs);
+        ActionBar localActionBar = getSupportActionBar();
+        localActionBar.setNavigationMode(2);
+        this.listTab = localActionBar.newTab().setText("List");
+        this.calendarTab = localActionBar.newTab().setText("Calendar");
+        //this.listTab.setIcon(2130837600);
+        //this.calendarTab.setIcon(2130837599);
+        this.listTab.setTabListener(new ViewRecordsTabListener(this.viewListFragment));
+        this.calendarTab.setTabListener(new ViewRecordsTabListener(this.viewCalendarFragment));
+        localActionBar.addTab(this.listTab);
+        localActionBar.addTab(this.calendarTab);
+        localActionBar.setSelectedNavigationItem(getIntent().getIntExtra("ActiveTab", 0));
+    }
+
+    /*public boolean onCreateOptionsMenu(Menu paramMenu)
+    {
+        //getMenuInflater().inflate(2131558404, paramMenu);
+        //return true;
+    }*/
+
+    public boolean onOptionsItemSelected(MenuItem paramMenuItem)
+    {
+        paramMenuItem.getItemId();
+        return super.onOptionsItemSelected(paramMenuItem);
+    }
+
+    public void viewNextMonth(View paramView)
+    {
+        ((ViewCalendarFragment)this.viewCalendarFragment).viewNextMonth(paramView);
+    }
+
+    public void viewPrevMonth(View paramView)
+    {
+        ((ViewCalendarFragment)this.viewCalendarFragment).viewPrevMonth(paramView);
+    }
 }

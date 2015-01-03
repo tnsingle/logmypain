@@ -1,21 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical">
-    <ListView 
-        android:id="@+id/android:list"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" >
-    
-
-</ListView>
-<TextView 
-        android:id="@+id/android:empty"
-        android:text="There are no headache records."
-        android:layout_width="match_parent" 
-        android:layout_height="match_parent"
-        android:gravity="center"
-        >
-    </TextView>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <Spinner android:id="@id/view_records_year_spinner" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <Spinner android:entries="@array/month_array" android:id="@id/view_records_month_spinner" android:layout_width="wrap_content" android:layout_height="wrap_content" android:prompt="@string/month_picker" />
+    </LinearLayout>
+    <ListView android:id="@id/list_view_records" android:background="#ffcccccc" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@null" android:dividerHeight="0.0dip" />
+    <TextView android:gravity="center" android:id="@id/list_view_empty" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="There are no headache records." />
 </LinearLayout>

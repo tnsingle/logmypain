@@ -20,13 +20,13 @@ import com.apps.utils.HeadacheRecord;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
 	private static final String DATABASE_NAME = "headache.db";
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_TABLE_NAME = "headache_records";
     private static final String DATABASE_TABLE_CREATE =
                 "CREATE TABLE " + DATABASE_TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 		"Start_Date_Time DATETIME, " +
                 		"End_Date_Time DATETIME, " +
-                		"Intensity INTEGER, ";/* +
+                		"Intensity INTEGER);";/* +
                 		"Triggers VARCHAR(160), " +
                 		"Meds VARCHAR(160));";*/
 
@@ -42,10 +42,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int newVersion, int oldVersion) {
 		// TODO Auto-generated method stub
-		if (oldVersion < 2) {
+		//if (oldVersion < 2) {
 			db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE_NAME);
 	        onCreate(db);
-        }
+        //}
 	}
 	
 	// Add new record
@@ -96,7 +96,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     	List<HeadacheRecord> recordList = new ArrayList<HeadacheRecord>();
     	DecimalFormat formatter = new DecimalFormat("00");
     	String monthFormatted = formatter.format(month);
-        String selectQuery = "SELECT  * FROM " + DATABASE_TABLE_NAME + " where strftime('%m',Start_Date_Time)='"+monthFormatted+"' AND strftime('%Y',Start_Date_Time) = '"+year+"'";
+        String selectQuery = "SELECT  * FROM " + DATABASE_TABLE_NAME + " where strftime('%m',Start_Date_Time)='"+monthFormatted+"' AND strftime('%Y',Start_Date_Time) = '"+year+"' order by Start_Date_Time DESC";
  
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -114,7 +114,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public List<HeadacheRecord> getAllRecordsByYear(int year){
         List<HeadacheRecord> recordList = new ArrayList<HeadacheRecord>();
-        String selectQuery = "SELECT  * FROM " + DATABASE_TABLE_NAME + " where strftime('%Y',Start_Date_Time) = '"+year+"'";
+        String selectQuery = "SELECT  * FROM " + DATABASE_TABLE_NAME + " where strftime('%Y',Start_Date_Time) = '"+year+"' order by Start_Date_Time DESC";
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -168,6 +168,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         record.setId(Integer.parseInt(cursor.getString(0)));
         record.setIntensity(cursor.getInt(3));
         return record;
+    }
+
+    public List<String> getYears()
+    {
+        ArrayList localArrayList = new ArrayList();
+        Cursor localCursor = getWritableDatabase().rawQuery("SELECT DISTINCT strftime('%Y',Start_Date_Time) FROM " + DATABASE_TABLE_NAME + " ORDER BY Start_Date_Time DESC", null);
+        if (localCursor.moveToFirst()) {
+            do
+            {
+                localArrayList.add(localCursor.getString(0));
+            } while (localCursor.moveToNext());
+        }
+        return localArrayList;
     }
     
     private ContentValues setupValues(HeadacheRecord record){

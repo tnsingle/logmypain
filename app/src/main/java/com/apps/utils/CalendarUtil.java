@@ -37,6 +37,22 @@ public class CalendarUtil {
 		
 		return hours + " hours and " + min + " minutes";
 	}
+
+    public static String getShortDuration(Calendar startDate, Calendar endDate)
+    {
+        long milliseconds = endDate.getTimeInMillis() - startDate.getTimeInMillis();
+
+        int j = (int) ((milliseconds / (1000 * 60)) % 60);
+        int k = (int) ((milliseconds / (1000 * 60 * 60)) % 24);
+        if (j == 1) {
+            return j + " hr";
+        }
+        if (j < 1) {
+            return k + " min";
+        }
+        return j + " hrs ";
+
+    }
 	
 	public static Bundle bundleCalendar(Calendar cal){
 		Bundle args = new Bundle();

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="id" name="home" />
+    <item type="id" name="action_bar_activity_content" />
+    <item type="id" name="action_menu_divider" />
+    <item type="id" name="action_menu_presenter" />
+    <item type="id" name="progress_circular" />
+    <item type="id" name="progress_horizontal" />
+    <item type="id" name="action_bar_root">false</item>
+    <item type="id" name="action_bar_container">false</item>
+    <item type="id" name="action_bar">false</item>
+    <item type="id" name="action_context_bar">false</item>
+    <item type="id" name="split_action_bar">false</item>
+    <item type="id" name="action_bar_overlay_layout">false</item>
+    <item type="id" name="top_action_bar">false</item>
+    <item type="id" name="up">false</item>
+    <item type="id" name="action_bar_title">false</item>
+    <item type="id" name="action_bar_subtitle">false</item>
+    <item type="id" name="action_mode_close_button">false</item>
+    <item type="id" name="activity_chooser_view_content">false</item>
+    <item type="id" name="expand_activities_button">false</item>
+    <item type="id" name="image">false</item>
+    <item type="id" name="default_activity_button">false</item>
+    <item type="id" name="list_item">false</item>
+    <item type="id" name="icon">false</item>
+    <item type="id" name="title">false</item>
+    <item type="id" name="expanded_menu">false</item>
+    <item type="id" name="checkbox">false</item>
+    <item type="id" name="shortcut">false</item>
+    <item type="id" name="radio">false</item>
+    <item type="id" name="edit_query">false</item>
+    <item type="id" name="search_bar">false</item>
+    <item type="id" name="search_badge">false</item>
+    <item type="id" name="search_button">false</item>
+    <item type="id" name="search_edit_frame">false</item>
+    <item type="id" name="search_mag_icon">false</item>
+    <item type="id" name="search_plate">false</item>
+    <item type="id" name="search_src_text">false</item>
+    <item type="id" name="search_close_btn">false</item>
+    <item type="id" name="submit_area">false</item>
+    <item type="id" name="search_go_btn">false</item>
+    <item type="id" name="search_voice_btn">false</item>
+    <item type="id" name="mainContent">false</item>
+    <item type="id" name="headache">false</item>
+    <item type="id" name="startLabel">false</item>
+    <item type="id" name="startSection">false</item>
+    <item type="id" name="startDate">false</item>
+    <item type="id" name="startTime">false</item>
+    <item type="id" name="endLabel">false</item>
+    <item type="id" name="endSection">false</item>
+    <item type="id" name="endDate">false</item>
+    <item type="id" name="endTime">false</item>
+    <item type="id" name="intensityLabel">false</item>
+    <item type="id" name="seekBar1">false</item>
+    <item type="id" name="modifyTitle">false</item>
+    <item type="id" name="intensityInfo">false</item>
+    <item type="id" name="editTriggersLabel">false</item>
+    <item type="id" name="list_triggers_form">false</item>
+    <item type="id" name="modifySaveButton">false</item>
+    <item type="id" name="viewRecordsIntensity">false</item>
+    <item type="id" name="viewRecordsMonth">false</item>
+    <item type="id" name="viewRecordsDate">false</item>
+    <item type="id" name="viewRecordsHoursContainer">false</item>
+    <item type="id" name="viewRecordsHours">false</item>
+    <item type="id" name="delViewButton">false</item>
+    <item type="id" name="view_records_fragment_container">false</item>
+    <item type="id" name="calendar_day">false</item>
+    <item type="id" name="calendar">false</item>
+    <item type="id" name="calendarPrevButton">false</item>
+    <item type="id" name="calendarMonth">false</item>
+    <item type="id" name="calendarYear">false</item>
+    <item type="id" name="calendarNextButton">false</item>
+    <item type="id" name="calendarGrid">false</item>
+    <item type="id" name="dateTimeSection">false</item>
+    <item type="id" name="datePicker">false</item>
+    <item type="id" name="timePicker">false</item>
+    <item type="id" name="button1">false</item>
+    <item type="id" name="recordNowContent">false</item>
+    <item type="id" name="recordDialogDay">false</item>
+    <item type="id" name="recordDialogTime">false</item>
+    <item type="id" name="trigger_text_field">false</item>
+    <item type="id" name="trigger_add_button">false</item>
+    <item type="id" name="list_triggers">false</item>
+    <item type="id" name="view_records_year_spinner">false</item>
+    <item type="id" name="view_records_month_spinner">false</item>
+    <item type="id" name="list_view_records">false</item>
+    <item type="id" name="list_view_empty">false</item>
+    <item type="id" name="trigger_text_item">false</item>
+    <item type="id" name="trigger_checkbox">false</item>
+    <item type="id" name="action_settings">false</item>
+</resources>

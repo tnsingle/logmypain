@@ -1,139 +1,141 @@
 package com.apps.utils;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.List;
-import java.util.Locale;
-
-import com.apps.headache.R;
-import com.apps.headache.record.ModifyRecordActivity;
-import com.apps.utils.HeadacheRecord;
-
 import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class ViewRecordsAdapter extends ArrayAdapter <HeadacheRecord>{
+import com.apps.headache.R;
+import com.apps.headache.record.HeadacheRecordFormActivity;
+import com.apps.utils.Models.Headache;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.List;
+import java.util.Locale;
 
-	private Context context; 
-    private int layoutResourceId;    
+public class ViewRecordsAdapter
+        extends ArrayAdapter<HeadacheRecord> {
+    private Context context;
+    private int layoutResourceId;
     private List<HeadacheRecord> recordList;
     private long toDelete;
-    
-    public ViewRecordsAdapter(Context context, int layoutResourceId, List<HeadacheRecord> records) {
-        super(context, layoutResourceId, records);
-        this.layoutResourceId = layoutResourceId;
-        this.context = context;
-        this.recordList = records;
+
+    public ViewRecordsAdapter(Context paramContext, int paramInt, List<HeadacheRecord> paramList) {
+        super(paramContext, paramInt, paramList);
+        this.layoutResourceId = paramInt;
+        this.context = paramContext;
+        this.recordList = paramList;
     }
-    
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        View view = convertView;
-        final HeadacheRecord record = recordList.get(position);
-        System.out.println("list items: " + recordList.size());
-        if (view == null){ // no view to re-use, create new
-        	LayoutInflater inflater = (LayoutInflater)context.getSystemService
-        		      (Context.LAYOUT_INFLATER_SERVICE);
-            view = inflater.inflate(R.layout.activity_view_records, null);
-        }
-        if (record != null) {
 
-            TextView tt = (TextView) view.findViewById(R.id.date);
-            TextView tt1 = (TextView) view.findViewById(R.id.intensity);
-            TextView tt3 = (TextView) view.findViewById(R.id.hours);
+    public void deleteRecord(View paramView) {
+        DatabaseHelper localDatabaseHelper = new DatabaseHelper(this.context);
+        Integer localInteger = (Integer) paramView.getTag();
+        this.toDelete = ((HeadacheRecord) this.recordList.get(localInteger.intValue())).getId();
+        localDatabaseHelper.deleteRecord(this.toDelete);
+        this.recordList.remove(localInteger.intValue());
+        notifyDataSetChanged();
+    }
 
-            if (tt != null) {
-            	Calendar cal = record.getStart();
-            	if(cal != null)
-                tt.setText(cal.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.US)+" " + cal.get(Calendar.DATE) + ", " + cal.get(Calendar.YEAR));
+    public String getNumHours(Calendar paramCalendar1, Calendar paramCalendar2) {
+        SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("dd 'days' hh 'hours' mm 'minutes'", Locale.getDefault());
+        long l = paramCalendar2.getTime().getTime() - paramCalendar1.getTime().getTime();
+        GregorianCalendar localGregorianCalendar = new GregorianCalendar();
+        localGregorianCalendar.setTimeInMillis(l);
+        return localSimpleDateFormat.format(localGregorianCalendar.getTime());
+    }
+
+    public View getView(int paramInt, View paramView, ViewGroup paramViewGroup) {
+
+            View localView = paramView;
+            final HeadacheRecord localHeadache = (HeadacheRecord) this.recordList.get(paramInt);
+            if (localView == null) {
+                localView = ((LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(this.layoutResourceId, null);
             }
-            if (tt1 != null) {
-            	if(record.getIntensity() == -1){
-            		tt1.setText("Intensity: (not set)");
-            	}
-            	else{tt1.setText("Intensity: " + record.getIntensity());}
-                
-            }else{ tt.setText("date and intensity is null");}
-            if (tt3 != null) {
-            	SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyy 'at' hh:mm aa", Locale.getDefault());
-            		if((record.getEnd() != null) && (record.getStart() != null))
-                tt3.setText(dateFormat.format(record.getStart().getTime()) + "\nfor " + CalendarUtil.getDuration(record.getStart(), record.getEnd()));
-            		else if (record.getStart() != null)
-            			tt3.setText(dateFormat.format(record.getStart().getTime()));
-            	
-            }
-        }
-        
-        
-    	
-        
-        ImageButton deleteButton = (ImageButton) view.findViewById(R.id.delViewButton);
-        deleteButton.setTag(position);
-        deleteButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(final View v) {
-            	AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                builder.setMessage("Are you sure you want to delete this record?")
-                .setPositiveButton("Yes",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                            	deleteRecord(v);
-                            }
-                        }).setNegativeButton("No",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                            }
-                        });
-            	AlertDialog alert = builder.create();
-            	alert.show();
-            }
-        });
-        
-        ImageButton editButton = (ImageButton) view.findViewById(R.id.editViewButton);
-        editButton.setTag(position);
-        editButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(final View v) {
-            	Intent intent = new Intent(context, ModifyRecordActivity.class);
-        		intent.putExtra("Record_ID", record.getId());
-        		context.startActivity(intent);
-            }
+            localView.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View paramAnonymousView) {
+                    Intent localIntent = new Intent(ViewRecordsAdapter.this.context, HeadacheRecordFormActivity.class);
+                    localIntent.putExtra("Record_ID", localHeadache.getId());
+                    ViewRecordsAdapter.this.context.startActivity(localIntent);
+                }
             });
+            ImageView localImageView;
+            LinearLayout localLinearLayout;
+            if (localHeadache != null) {
+                TextView localTextView1 = (TextView) localView.findViewById(R.id.viewRecordsDate);
+                TextView localTextView2 = (TextView) localView.findViewById(R.id.viewRecordsMonth);
+                localImageView = (ImageView) localView.findViewById(R.id.viewRecordsIntensity);
+                localLinearLayout = (LinearLayout) localView.findViewById(R.id.viewRecordsHoursContainer);
+                TextView localTextView3 = (TextView) localView.findViewById(R.id.viewRecordsHours);
+                Calendar localCalendar = localHeadache.getStart();
+                if ((localTextView1 != null) && (localCalendar != null)) {
+                    localTextView1.setText(new SimpleDateFormat("dd", Locale.getDefault()).format(localCalendar.getTime()));
+                }
+                if ((localTextView2 != null) && (localCalendar != null)) {
+                    localTextView2.setText(localCalendar.getDisplayName(Calendar.MONTH, Calendar.SHORT, Locale.getDefault()));
+                }
+                if (localImageView != null) {
+                    localImageView.setVisibility(View.INVISIBLE);
+                    if (localHeadache.getIntensity() != -1) {
+                        int i;
+                        if (localHeadache.getIntensity() <= 3) {
+                            i = this.context.getResources().getColor(R.color.intensity_mild);
+                        }
 
-       
-        
-        return view;
+
+                        if (localHeadache.getIntensity() <= 6) {
+                            i = this.context.getResources().getColor(R.color.intensity_mod);
+                        } else {
+                            i = this.context.getResources().getColor(R.color.intensity_sev);
+                        }
+                        localImageView.setBackgroundColor(i);
+                        localImageView.setVisibility(View.VISIBLE);
+                    }
+
+                }
+                if (localTextView3 != null) {
+                    new SimpleDateFormat("hh:mm aa", Locale.getDefault());
+                    if ((localHeadache.getEnd() == null) || (localHeadache.getStart() == null)) {
+                        localLinearLayout.setVisibility(View.INVISIBLE);
+                    }else {
+                        localLinearLayout.setVisibility(View.VISIBLE);
+                        localTextView3.setText(CalendarUtil.getShortDuration(localHeadache.getStart(), localHeadache.getEnd()));
+                    }
+                }
+            }
+            //for (;;) {
+            ImageButton localImageButton = (ImageButton) localView.findViewById(R.id.delViewButton);
+            localImageButton.setTag(Integer.valueOf(paramInt));
+            localImageButton.setOnClickListener(new View.OnClickListener() {
+                public void onClick(final View paramAnonymousView) {
+                    AlertDialog.Builder localBuilder = new AlertDialog.Builder(ViewRecordsAdapter.this.context);
+                    localBuilder.setMessage("Are you sure you want to delete this record?").setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int) {
+                            ViewRecordsAdapter.this.deleteRecord(paramAnonymousView);
+                        }
+                    }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int) {
+                            paramAnonymous2DialogInterface.cancel();
+                        }
+                    });
+                    localBuilder.create().show();
+                }
+            });
+            return localView;
+
+
     }
-    
-    public void deleteRecord(View v){
-    	 
-         	   DatabaseHelper db = new DatabaseHelper(context);
-                Integer index = (Integer) v.getTag();
-                toDelete = recordList.get(index.intValue()).getId();
-                db.deleteRecord(toDelete);
-                recordList.remove(index.intValue());  
-                notifyDataSetChanged();   
-            
-    
-    }
-    
-    
-    
-    public String getNumHours(Calendar start, Calendar end){
-    	SimpleDateFormat dateFormat = new SimpleDateFormat("dd 'days' hh 'hours' mm 'minutes'", Locale.getDefault()); 
-    	long totalMills = end.getTime().getTime() - start.getTime().getTime();
-    	Calendar newCal = new GregorianCalendar();
-    	newCal.setTimeInMillis(totalMills);
-    	return dateFormat.format(newCal.getTime());
-    }
-    
-    
+
 }

@@ -66,7 +66,7 @@ public class MainActivity extends Activity {
 		String time = "";
 		day += CalendarUtil.getShortDateDisplay(record.getStart());
 		time += CalendarUtil.getTimeDisplay(record.getStart());
-		Record_ID = db.addRecord(record);
+        this.Record_ID = this.db.addRecord(record);
 		
 		
 		TextView dayTextView = (TextView)findViewById(R.id.recordDialogDay);
@@ -111,19 +111,11 @@ public class MainActivity extends Activity {
 		db.deleteRecord(Record_ID);
 		hideDialogAnimated(dialog);
 	}
-	
-	/** Called when the user clicks the Send button */
-	public void viewRecords(View view) {
-		Intent intent = new Intent(this, ViewRecordsActivity.class);
-		
-	    startActivity(intent);
-	}
-	
-	public void viewCalendar(View view) {
-		Intent intent = new Intent(this, ViewCalendarActivity.class);
-		
-	    startActivity(intent);
-	}
+
+    public void viewRecords(View paramView)
+    {
+        startActivity(new Intent(this, ViewRecordsActivity.class));
+    }
 	
 	public void hideDialogAnimated(final View v) {
 
@@ -177,5 +169,4 @@ public class MainActivity extends Activity {
 
 	    v.startAnimation(alpha);
 	}
-
 }

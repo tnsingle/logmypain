@@ -1,36 +1,9 @@
-<LinearLayout 
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" 
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <LinearLayout 
-	    android:orientation="horizontal" 
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content"
-		    android:layout_marginLeft="5dp"
-		    android:layout_marginRight="5dp">
-	    <EditText
-		    android:id="@+id/trigger_text_field"
-		    android:layout_width="0dp"
-		    android:layout_height="wrap_content"
-        	android:layout_weight=".7"
-		    android:hint="Add New Trigger"
-		    android:inputType="textCapWords" />
-	    <Button 
-	        android:id="@+id/trigger_add_button"
-		    android:layout_width="0dp"
-		    android:layout_height="wrap_content"
-        	android:layout_weight=".3"
-		    android:background="@drawable/add_dialog_button"
-		    android:clickable="true"
-		    android:text="Add"
-	    	android:paddingTop="5dp"
-	    	android:paddingBottom="5dp"
-	    	android:minHeight="0dp"
-	    	android:minWidth="0dp"/>
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip">
+        <EditText android:id="@id/trigger_text_field" android:layout_width="0.0dip" android:layout_height="wrap_content" android:hint="Add New Trigger" android:layout_weight="0.7" android:inputType="textCapWords" />
+        <Button android:id="@id/trigger_add_button" android:background="@drawable/add_dialog_button" android:paddingTop="5.0dip" android:paddingBottom="5.0dip" android:clickable="true" android:layout_width="0.0dip" android:layout_height="wrap_content" android:minWidth="0.0dip" android:minHeight="0.0dip" android:text="Add" android:layout_weight="0.3" />
     </LinearLayout>
-    <ListView 
-        android:id="@+id/list_triggers"
-	    android:layout_width="match_parent"
-	    android:layout_height="match_parent" />
+    <ListView android:id="@id/list_triggers" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </LinearLayout>

@@ -29,17 +29,17 @@ public class ViewListFragment extends Fragment{
             Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		view = inflater.inflate(R.layout.listview_view_records, container, false);
-	//	final ListView list = (ListView) view.findViewById(R.id.list_view_records);
-		//final TextView emptyList = (TextView) view.findViewById(R.id.list_view_empty);
+		final ListView list = (ListView) view.findViewById(R.id.list_view_records);
+		final TextView emptyList = (TextView) view.findViewById(R.id.list_view_empty);
 		//getActionBar().setDisplayHomeAsUpEnabled(true);
 		DatabaseHelper db = new DatabaseHelper(this.getActivity());
 		//rAdapter = new ViewRecordsAdapter(this.getActivity(),
-        //        layout.activity_view_records, db.getAllHeadaches());
+        //       layout.activity_view_records, db.getAllHeadaches());
 		//list.setAdapter(rAdapter);
-		//list.setEmptyView(emptyList);
-		
-		//List<String> years = db.getYears();
-		//setupSpinners(list, years);
+		list.setEmptyView(emptyList);
+
+        List<String> years = db.getYears();
+		setupSpinners(list, years);
 		
 		return view;
 	}
@@ -51,7 +51,7 @@ public class ViewListFragment extends Fragment{
 			int year = cal.get(Calendar.YEAR);
 			years.add(Integer.toString(year));
 		}
-		/*Spinner yearSpinner = (Spinner) view.findViewById(R.id.view_records_year_spinner);
+		Spinner yearSpinner = (Spinner) view.findViewById(R.id.view_records_year_spinner);
 		Spinner monthSpinner = (Spinner) view.findViewById(R.id.view_records_month_spinner);
 		
 		ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this.getActivity(),
@@ -61,7 +61,7 @@ public class ViewListFragment extends Fragment{
 		   
 		yearSpinner.setOnItemSelectedListener(new YearSelectedListener(list, monthSpinner, YearSelectedListener.Change.YEAR));	
 		monthSpinner.setOnItemSelectedListener(new YearSelectedListener(list, yearSpinner, YearSelectedListener.Change.MONTH));
-		*/
+
 	}
 	
 	public void onClickDeleteRecord(View v){
