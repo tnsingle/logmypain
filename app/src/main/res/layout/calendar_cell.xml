@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.apps.utils.SquareLayout android:orientation="vertical" android:background="#ffffffff" android:paddingLeft="5.0dip" android:paddingTop="5.0dip" android:paddingRight="5.0dip" android:paddingBottom="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<com.logmypain.utils.SquareLayout
+    android:orientation="vertical" android:background="#ffffffff" android:paddingLeft="5.0dip" android:paddingTop="5.0dip" android:paddingRight="5.0dip" android:paddingBottom="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <TextView android:textStyle="bold" android:gravity="center" android:id="@id/calendar_day" android:background="@drawable/circle" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</com.apps.utils.SquareLayout>
+</com.logmypain.utils.SquareLayout>

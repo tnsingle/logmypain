@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE manifest>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.apps.headache"
+    package="com.logmypain.main"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -14,7 +14,7 @@
         android:icon="@drawable/ic_launcher_logmypain"
         android:theme="@style/AppTheme" android:logo="@drawable/ic_logo_logmypain" android:label="@string/app_name">
         <activity
-            android:name="com.apps.headache.MainActivity"
+            android:name="com.logmypain.main.MainActivity"
             android:label="LogMyPain" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,32 +23,32 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.apps.headache.record.ModifyRecordActivity"
+            android:name="com.logmypain.main.record.ModifyRecordActivity"
             android:label="@string/title_activity_record_headache_now"
-        android:parentActivityName="com.apps.headache.MainActivity" >
+        android:parentActivityName="com.logmypain.main.MainActivity" >
         <!-- Parent activity meta-data to support 4.0 and lower -->
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
-            android:value="com.apps.headache.MainActivity" /> >
+            android:value="com.logmypain.main.MainActivity" /> >
         </activity>
         <activity
-            android:name="com.apps.headache.ViewRecordsActivity"
+            android:name="com.logmypain.main.ViewRecordsActivity"
             android:label="@string/title_activity_view_records"
-        android:parentActivityName="com.apps.headache.MainActivity" >
+        android:parentActivityName="com.logmypain.main.MainActivity" >
         <!-- Parent activity meta-data to support 4.0 and lower -->
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
-            android:value="com.apps.headache.MainActivity" />
+            android:value="com.logmypain.main.MainActivity" />
          >
         </activity>
         <activity
-            android:name="com.apps.headache.ViewCalendarActivity"
+            android:name="com.logmypain.main.ViewCalendarActivity"
             android:label="View Calendar"
-        android:parentActivityName="com.apps.headache.MainActivity" >
+        android:parentActivityName="com.logmypain.main.MainActivity" >
         <!-- Parent activity meta-data to support 4.0 and lower -->
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
-            android:value="com.apps.headache.MainActivity" />
+            android:value="com.logmypain.main.MainActivity" />
          >
         </activity>
     </application>
