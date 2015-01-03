@@ -3,11 +3,11 @@ Log My Pain
 
 A migraine tracking app for android
 http://www.logmypain.com/
-![Alt text](screens.jpg?raw=true "App Screens")
+![Screens](screens.jpg?raw=true "App Screens")
 
 About
 ===
-I started this app because I am too lazy to fill out the calendars my neurologist gives me, but I'm always on my phone.
+I started this app because I'm too lazy to fill out the calendars my neurologist gives me, but I'm always on my phone.
 
 Setup
 ===
