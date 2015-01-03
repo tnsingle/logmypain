@@ -6,7 +6,7 @@ http://www.logmypain.com/
 
 About
 ===
-I started this app because I am too lazy to fill out the calendars my neurologist gives me...
+I started this app because I am too lazy to fill out the calendars my neurologist gives me, but I'm always on my phone.
 
 Setup
 ===
