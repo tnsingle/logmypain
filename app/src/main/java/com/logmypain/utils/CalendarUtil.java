@@ -42,15 +42,15 @@ public class CalendarUtil {
     {
         long milliseconds = endDate.getTimeInMillis() - startDate.getTimeInMillis();
 
-        int j = (int) ((milliseconds / (1000 * 60)) % 60);
-        int k = (int) ((milliseconds / (1000 * 60 * 60)) % 24);
-        if (j == 1) {
-            return j + " hr";
+        int min = (int) ((milliseconds / (1000 * 60)) % 60);
+        int hour = (int) ((milliseconds / (1000 * 60 * 60)) % 24);
+        if (hour == 1) {
+            return hour + " hr";
         }
-        if (j < 1) {
-            return k + " min";
+        if (hour < 1) {
+            return min + " min";
         }
-        return j + " hrs ";
+        return hour + " hrs ";
 
     }
 	

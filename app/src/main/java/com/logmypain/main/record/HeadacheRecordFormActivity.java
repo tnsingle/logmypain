@@ -136,9 +136,8 @@ public void saveRecord(View view) {
         	db.updateRecord(record);
         else
         	db.addRecord(record);
-		Intent intent = new Intent(this, ViewRecordsActivity.class);
-		
-	    startActivity(intent);
+    startActivity(new Intent(this, ViewRecordsActivity.class));
+
 	}
 	
 	private void setupSeekBar(){

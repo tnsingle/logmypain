@@ -1,5 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:background="@drawable/view_records_date_cell" android:padding="2.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:layout_marginTop="2.0dip" android:layout_marginRight="2.0dip">
+        <ImageView android:id="@id/viewRecordsIntensity" android:layout_width="4.0dip" android:layout_height="fill_parent" android:src="@drawable/rectangle" android:layout_weight="0.01" style="@style/ModifySecondaryInfo" />
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" android:orientation="vertical" android:layout_weight="0.9">
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="0.99">
+                <LinearLayout android:gravity="left" android:orientation="horizontal" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="0.9" android:padding="10.0dip">
+                    <TextView android:textSize="22.0sp" android:textColor="@color/brand_pink" android:id="@id/viewRecordsDate" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="01" />
+                    <TextView android:textSize="22.0sp" android:textColor="@color/med_grey" android:id="@id/viewRecordsMonth" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="JUN" android:textAllCaps="true" android:layout_marginLeft=".5dip" />
+                    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/viewRecordsHoursContainer" android:background="#ff00d7ea" android:paddingLeft="5.0dip" android:paddingTop="1.0dip" android:paddingRight="5.0dip" android:paddingBottom="1.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_gravity="center">
+                        <TextView android:textSize="12.0sp" android:id="@id/viewRecordsHours" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="8 HRS" android:textAllCaps="true" />
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout android:gravity="right" android:orientation="horizontal" android:padding="0.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="0.01">
+                    <ImageButton android:id="@id/delViewButton" style="@style/DeleteButton" />
+                </LinearLayout>
+            </LinearLayout>
+            <!-- Addition Content-->
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
+
+<!-- Old layout
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout android:orientation="horizontal" android:background="@drawable/view_records_date_cell" android:padding="2.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:layout_marginTop="2.0dip" android:layout_marginRight="2.0dip">
         <ImageView android:id="@id/viewRecordsIntensity" android:layout_width="0.0dip" android:layout_height="fill_parent" android:src="@drawable/rectangle" android:layout_weight="0.01" style="@style/ModifySecondaryInfo" />
@@ -19,4 +45,4 @@
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+</LinearLayout>-->

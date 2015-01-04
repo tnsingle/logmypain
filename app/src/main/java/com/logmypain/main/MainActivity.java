@@ -1,6 +1,7 @@
 package com.logmypain.main;
 
 import com.logmypain.main.record.HeadacheRecordFormActivity;
+import com.logmypain.tasks.ViewRecordsActivity;
 import com.logmypain.utils.CalendarUtil;
 import com.logmypain.utils.DatabaseHelper;
 import com.logmypain.utils.HeadacheRecord;

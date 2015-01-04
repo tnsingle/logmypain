@@ -89,10 +89,7 @@ public class ViewRecordsAdapter
                         int i;
                         if (localHeadache.getIntensity() <= 3) {
                             i = this.context.getResources().getColor(R.color.intensity_mild);
-                        }
-
-
-                        if (localHeadache.getIntensity() <= 6) {
+                        }else if (localHeadache.getIntensity() <= 6) {
                             i = this.context.getResources().getColor(R.color.intensity_mod);
                         } else {
                             i = this.context.getResources().getColor(R.color.intensity_sev);

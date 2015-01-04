@@ -32,18 +32,8 @@
             android:value="com.logmypain.main.MainActivity" /> >
         </activity>
         <activity
-            android:name="com.logmypain.main.ViewRecordsActivity"
+            android:name="com.logmypain.tasks.ViewRecordsActivity"
             android:label="@string/title_activity_view_records"
-        android:parentActivityName="com.logmypain.main.MainActivity" >
-        <!-- Parent activity meta-data to support 4.0 and lower -->
-        <meta-data
-            android:name="android.support.PARENT_ACTIVITY"
-            android:value="com.logmypain.main.MainActivity" />
-         >
-        </activity>
-        <activity
-            android:name="com.logmypain.main.ViewCalendarActivity"
-            android:label="View Calendar"
         android:parentActivityName="com.logmypain.main.MainActivity" >
         <!-- Parent activity meta-data to support 4.0 and lower -->
         <meta-data
