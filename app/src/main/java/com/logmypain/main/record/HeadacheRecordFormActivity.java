@@ -9,10 +9,12 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
+import android.text.TextUtils;
 import android.text.format.Time;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -24,9 +26,9 @@ import com.logmypain.main.record.dialogs.DateTimeDialogFragment;
 import com.logmypain.tasks.ViewRecordsActivity;
 import com.logmypain.utils.CalendarUtil;
 import com.logmypain.utils.DatabaseHelper;
-import com.logmypain.utils.HeadacheRecord;
+import com.logmypain.utils.Models.HeadacheRecord;
 
-import com.logmypain.main.R;
+import com.logmypain.R;
 
 public class HeadacheRecordFormActivity extends FragmentActivity 
 implements DateTimeDialogFragment.DateTimeDialogListener{
@@ -42,7 +44,8 @@ implements DateTimeDialogFragment.DateTimeDialogListener{
 	private TextView startTimeText;
 	private TextView endDateText;
 	private TextView endTimeText;
-	private ListView triggersListView;
+    private EditText notesEditText;
+	//private ListView triggersListView;
 	//private TriggersAdapter triggersAdapter;
 	private Calendar startCal;
 	private Calendar endCal;
@@ -81,6 +84,7 @@ implements DateTimeDialogFragment.DateTimeDialogListener{
         endTimeText = (TextView) findViewById(R.id.endTime);
         intensitySeekBar = (SeekBar) findViewById(R.id.seekBar1);
         intensityInfo = (TextView) findViewById(R.id.intensityInfo);
+        notesEditText = (EditText) findViewById(R.id.notes);
         //triggersListView = (ListView) findViewById(R.id.list_triggers_form);
         //triggersAdapter = new TriggersAdapter(this,
         //        layout.triggers_form_list_item, new ArrayList<Trigger>(), new ArrayList<Trigger>());
@@ -114,7 +118,11 @@ implements DateTimeDialogFragment.DateTimeDialogListener{
 	        if(intensity > -1){
 	        	intensitySeekBar.setProgress(intensity);
 	        }
-	        
+
+            String notes = record.getNotes();
+            if(!TextUtils.isEmpty(notes)){
+                notesEditText.setText(notes);
+            }
 	       /* List<Trigger> triggers = record.getTriggers();
 	        if(triggers.size() > 0){
 	        	triggersAdapter.setTriggers(triggers);
@@ -128,15 +136,16 @@ implements DateTimeDialogFragment.DateTimeDialogListener{
 	
 	
 public void saveRecord(View view) {
-        
-        record.setIntensity(intensitySeekBar.getProgress());
-        record.setStart(startCal);
-        record.setEnd(endCal);
-        if(record.getId() > -1)
-        	db.updateRecord(record);
-        else
-        	db.addRecord(record);
-    startActivity(new Intent(this, ViewRecordsActivity.class));
+
+           record.setIntensity(intensitySeekBar.getProgress());
+           record.setStart(startCal);
+           record.setEnd(endCal);
+           record.setNotes(notesEditText.getText().toString());
+           if (record.getId() > -1)
+               db.updateRecord(record);
+           else
+               db.addRecord(record);
+           startActivity(new Intent(this, ViewRecordsActivity.class));
 
 	}
 	
@@ -217,7 +226,7 @@ public void saveRecord(View view) {
 		// TODO Auto-generated method stub
 		Calendar cal = Calendar.getInstance(TimeZone.getDefault(), Locale.getDefault());
 		int hour = time.getCurrentHour();
-		cal.set(date.getYear(), date.getMonth(), date.getDayOfMonth(), hour, time.getCurrentMinute());
+		cal.set(date.getYear(), date.getMonth(), date.getDayOfMonth(), hour, time.getCurrentMinute(), 0);
 		
 		switch(activeDateTimeField){
 			case START:

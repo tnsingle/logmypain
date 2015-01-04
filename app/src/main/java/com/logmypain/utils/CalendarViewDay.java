@@ -1,5 +1,7 @@
 package com.logmypain.utils;
 
+import com.logmypain.utils.Models.HeadacheRecord;
+
 public class CalendarViewDay {
 	private int day;
 	private HeadacheRecord record;

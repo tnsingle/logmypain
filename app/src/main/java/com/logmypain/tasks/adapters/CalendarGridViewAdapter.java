@@ -1,8 +1,10 @@
-package com.logmypain.utils;
+package com.logmypain.tasks.adapters;
 
 import java.util.List;
 
-import com.logmypain.main.R;
+import com.logmypain.R;
+import com.logmypain.utils.CalendarViewDay;
+import com.logmypain.utils.Models.HeadacheRecord;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

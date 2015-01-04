@@ -1,6 +1,11 @@
 package com.logmypain.tasks;
 
-import com.logmypain.main.R;
+import com.logmypain.R;
+import com.logmypain.main.MainActivity;
+import com.logmypain.tasks.framents.ViewCalendarFragment;
+import com.logmypain.tasks.framents.ViewListFragment;
+import com.logmypain.tasks.listeners.ViewRecordsTabListener;
+
 import android.os.Bundle;
 import android.content.Intent;
 import android.support.v4.app.Fragment;

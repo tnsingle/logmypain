@@ -2,9 +2,9 @@ package com.logmypain.main.record.dialogs;
 
 import java.util.List;
 
-import com.logmypain.main.R;
+import com.logmypain.R;
 import com.logmypain.utils.DatabaseHelper;
-import com.logmypain.utils.TriggersAdapter;
+import com.logmypain.tasks.adapters.TriggersAdapter;
 import com.logmypain.utils.Models.Trigger;
 import android.os.Bundle;
 import android.app.AlertDialog;

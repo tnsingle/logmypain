@@ -1,6 +1,6 @@
-package com.logmypain.tasks;
+package com.logmypain.tasks.listeners;
 
-import com.logmypain.main.R;
+import com.logmypain.R;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;

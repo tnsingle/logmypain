@@ -1,4 +1,4 @@
-package com.logmypain.tasks;
+package com.logmypain.tasks.framents;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -6,9 +6,10 @@ import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
 
+import com.logmypain.tasks.listeners.YearSelectedListener;
 import com.logmypain.utils.DatabaseHelper;
-import com.logmypain.utils.ViewRecordsAdapter;
-import com.logmypain.main.R;
+import com.logmypain.tasks.adapters.ViewRecordsAdapter;
+import com.logmypain.R;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -30,7 +31,9 @@ public class ViewListFragment extends Fragment{
 		final ListView list = (ListView) view.findViewById(R.id.list_view_records);
 		final TextView emptyList = (TextView) view.findViewById(R.id.list_view_empty);
 		//getActionBar().setDisplayHomeAsUpEnabled(true);
-		DatabaseHelper db = new DatabaseHelper(this.getActivity());
+
+            DatabaseHelper db = new DatabaseHelper(this.getActivity());
+
 		//rAdapter = new ViewRecordsAdapter(this.getActivity(),
         //       layout.activity_view_records, db.getAllHeadaches());
 		//list.setAdapter(rAdapter);
@@ -38,7 +41,7 @@ public class ViewListFragment extends Fragment{
 
         List<String> years = db.getYears();
 		setupSpinners(list, years);
-		
+
 		return view;
 	}
 
@@ -57,7 +60,7 @@ public class ViewListFragment extends Fragment{
 		dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		yearSpinner.setAdapter(dataAdapter);
 		   
-		yearSpinner.setOnItemSelectedListener(new YearSelectedListener(list, monthSpinner, YearSelectedListener.Change.YEAR));	
+		yearSpinner.setOnItemSelectedListener(new YearSelectedListener(list, monthSpinner, YearSelectedListener.Change.YEAR));
 		monthSpinner.setOnItemSelectedListener(new YearSelectedListener(list, yearSpinner, YearSelectedListener.Change.MONTH));
 
 	}

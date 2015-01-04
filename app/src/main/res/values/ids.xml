@@ -52,6 +52,8 @@
     <item type="id" name="endTime">false</item>
     <item type="id" name="intensityLabel">false</item>
     <item type="id" name="seekBar1">false</item>
+    <item type="id" name="notes">false</item>
+    <item type="id" name="notesLabel">false</item>
     <item type="id" name="modifyTitle">false</item>
     <item type="id" name="intensityInfo">false</item>
     <item type="id" name="editTriggersLabel">false</item>
@@ -62,6 +64,7 @@
     <item type="id" name="viewRecordsDate">false</item>
     <item type="id" name="viewRecordsHoursContainer">false</item>
     <item type="id" name="viewRecordsHours">false</item>
+    <item type="id" name="viewRecordsNotes">false</item>
     <item type="id" name="delViewButton">false</item>
     <item type="id" name="view_records_fragment_container">false</item>
     <item type="id" name="calendar_day">false</item>

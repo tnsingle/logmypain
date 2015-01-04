@@ -1,9 +1,10 @@
-package com.logmypain.utils;
+package com.logmypain.tasks.adapters;
 
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,8 +14,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.logmypain.main.R;
+import com.logmypain.R;
 import com.logmypain.main.record.HeadacheRecordFormActivity;
+import com.logmypain.utils.CalendarUtil;
+import com.logmypain.utils.DatabaseHelper;
+import com.logmypain.utils.Models.HeadacheRecord;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -56,7 +60,7 @@ public class ViewRecordsAdapter
     public View getView(int paramInt, View paramView, ViewGroup paramViewGroup) {
 
             View localView = paramView;
-            final HeadacheRecord localHeadache = (HeadacheRecord) this.recordList.get(paramInt);
+            final HeadacheRecord record = (HeadacheRecord) this.recordList.get(paramInt);
             if (localView == null) {
                 localView = ((LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(this.layoutResourceId, null);
             }
@@ -64,48 +68,59 @@ public class ViewRecordsAdapter
                 @Override
                 public void onClick(View v) {
                     Intent localIntent = new Intent(ViewRecordsAdapter.this.context, HeadacheRecordFormActivity.class);
-                    localIntent.putExtra("Record_ID", localHeadache.getId());
+                    localIntent.putExtra("Record_ID", record.getId());
                     ViewRecordsAdapter.this.context.startActivity(localIntent);
                 }
             });
-            ImageView localImageView;
-            LinearLayout localLinearLayout;
-            if (localHeadache != null) {
-                TextView localTextView1 = (TextView) localView.findViewById(R.id.viewRecordsDate);
-                TextView localTextView2 = (TextView) localView.findViewById(R.id.viewRecordsMonth);
-                localImageView = (ImageView) localView.findViewById(R.id.viewRecordsIntensity);
-                localLinearLayout = (LinearLayout) localView.findViewById(R.id.viewRecordsHoursContainer);
-                TextView localTextView3 = (TextView) localView.findViewById(R.id.viewRecordsHours);
-                Calendar localCalendar = localHeadache.getStart();
-                if ((localTextView1 != null) && (localCalendar != null)) {
-                    localTextView1.setText(new SimpleDateFormat("dd", Locale.getDefault()).format(localCalendar.getTime()));
+
+            
+            if (record != null) {
+                TextView dateTextView = (TextView) localView.findViewById(R.id.viewRecordsDate);
+                TextView monthTextView = (TextView) localView.findViewById(R.id.viewRecordsMonth);
+                ImageView intensityImageView = (ImageView) localView.findViewById(R.id.viewRecordsIntensity);
+                LinearLayout hoursContainerLinearLayout = (LinearLayout) localView.findViewById(R.id.viewRecordsHoursContainer);
+                TextView hoursTextView = (TextView) localView.findViewById(R.id.viewRecordsHours);
+                TextView notesTextView = (TextView) localView.findViewById(R.id.viewRecordsNotes);
+                Calendar localCalendar = record.getStart();
+                if ((dateTextView != null) && (localCalendar != null)) {
+                    dateTextView.setText(new SimpleDateFormat("dd", Locale.getDefault()).format(localCalendar.getTime()));
                 }
-                if ((localTextView2 != null) && (localCalendar != null)) {
-                    localTextView2.setText(localCalendar.getDisplayName(Calendar.MONTH, Calendar.SHORT, Locale.getDefault()));
+                if ((monthTextView != null) && (localCalendar != null)) {
+                    monthTextView.setText(localCalendar.getDisplayName(Calendar.MONTH, Calendar.SHORT, Locale.getDefault()));
                 }
-                if (localImageView != null) {
-                    localImageView.setVisibility(View.INVISIBLE);
-                    if (localHeadache.getIntensity() != -1) {
+                if (intensityImageView != null) {
+                    intensityImageView.setVisibility(View.INVISIBLE);
+                    if (record.getIntensity() != -1) {
                         int i;
-                        if (localHeadache.getIntensity() <= 3) {
+                        if (record.getIntensity() <= 3) {
                             i = this.context.getResources().getColor(R.color.intensity_mild);
-                        }else if (localHeadache.getIntensity() <= 6) {
+                        }else if (record.getIntensity() <= 6) {
                             i = this.context.getResources().getColor(R.color.intensity_mod);
                         } else {
                             i = this.context.getResources().getColor(R.color.intensity_sev);
                         }
-                        localImageView.setBackgroundColor(i);
-                        localImageView.setVisibility(View.VISIBLE);
+                        intensityImageView.setBackgroundColor(i);
+                        intensityImageView.setVisibility(View.VISIBLE);
                     }
 
                 }
-                if (localTextView3 != null) {
+                if (hoursTextView != null) {
                     new SimpleDateFormat("hh:mm aa", Locale.getDefault());
-                    if ((localHeadache.getEnd() == null) || (localHeadache.getStart() == null)) {
-                        localLinearLayout.setVisibility(View.INVISIBLE);
+                    if ((record.getEnd() == null) || (record.getStart() == null)) {
+                        hoursContainerLinearLayout.setVisibility(View.INVISIBLE);
                     }else {
-                        localLinearLayout.setVisibility(View.VISIBLE);
-                        localTextView3.setText(CalendarUtil.getShortDuration(localHeadache.getStart(), localHeadache.getEnd()));
+                        hoursContainerLinearLayout.setVisibility(View.VISIBLE);
+                        hoursTextView.setText(CalendarUtil.getShortDuration(record.getStart(), record.getEnd()));
+                    }
+                }
+
+                if(notesTextView != null){
+                    if(!TextUtils.isEmpty((record.getNotes()))) {
+                        notesTextView.setText(record.getNotes());
+                        notesTextView.setVisibility(View.VISIBLE);
+                    }else{
+                       notesTextView.setVisibility(View.GONE);
+
                     }
                 }
             }

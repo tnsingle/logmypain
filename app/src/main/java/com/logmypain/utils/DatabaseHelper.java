@@ -15,6 +15,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.logmypain.utils.Models.HeadacheRecord;
+
 public class DatabaseHelper extends SQLiteOpenHelper {
 
 	private static final String DATABASE_NAME = "headache.db";
@@ -24,9 +26,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "CREATE TABLE " + DATABASE_TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 		"Start_Date_Time DATETIME, " +
                 		"End_Date_Time DATETIME, " +
-                		"Intensity INTEGER);";/* +
-                		"Triggers VARCHAR(160), " +
-                		"Meds VARCHAR(160));";*/
+                		"Intensity INTEGER," +
+                        "Notes VARCHAR(255));";
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -141,18 +142,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private HeadacheRecord getRecord(Cursor cursor){
     	HeadacheRecord record = new HeadacheRecord();
     	Calendar t = Calendar.getInstance(TimeZone.getDefault(), Locale.getDefault());
-    	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss",Locale.getDefault());
+    	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:00",Locale.getDefault());
     	
 		try {
 			java.util.Date dt;
 			java.util.Date enddt;
-			dt = sdf.parse(cursor.getString(1));
-        	t.setTime(dt);
+
+            String startStr = cursor.getString(1);
+            String endStr = cursor.getString(2);
+
+			dt = sdf.parse(startStr);
             record.setStart(dt);
             
-            if(cursor.getString(2) != null){
-            enddt = sdf.parse(cursor.getString(2));
-            t.setTime(enddt);
+            if(endStr != null){
+            enddt = sdf.parse(endStr);
             record.setEnd(enddt);
             
             //System.out.println("start: " + dt.toString() + "\nend:" + enddt.toString());
@@ -165,6 +168,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     	
         record.setId(Integer.parseInt(cursor.getString(0)));
         record.setIntensity(cursor.getInt(3));
+        record.setNotes(cursor.getString(4));
         return record;
     }
 
@@ -183,7 +187,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     
     private ContentValues setupValues(HeadacheRecord record){
     	ContentValues values = new ContentValues();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()); 
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:00", Locale.getDefault());
         Calendar startDateTime = record.getStart();
         Calendar endDateTime = record.getEnd();
         
@@ -192,7 +196,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if (endDateTime != null)
         	values.put("End_Date_Time", dateFormat.format(endDateTime.getTime()));
         values.put("Intensity", record.getIntensity());
-        
+        values.put("Notes", record.getNotes());
         return values;
     }
 }

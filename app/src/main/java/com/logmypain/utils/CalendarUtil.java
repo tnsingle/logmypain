@@ -26,7 +26,7 @@ public class CalendarUtil {
 		return dateFormat.format(cal.getTime());
 	} 
 	
-	public static String getDuration(Calendar start, Calendar end){
+	/*public static String getDuration(Calendar start, Calendar end){
 		Date startDate = start.getTime();
 		Date endDate = end.getTime();
 
@@ -36,21 +36,37 @@ public class CalendarUtil {
 		int min = (int) (difference - (1000*60*60*24*days) - (1000*60*60*hours)) / (1000*60);
 		
 		return hours + " hours and " + min + " minutes";
-	}
+	}*/
 
     public static String getShortDuration(Calendar startDate, Calendar endDate)
     {
-        long milliseconds = endDate.getTimeInMillis() - startDate.getTimeInMillis();
+        long startTime = startDate.getTimeInMillis();
+        long endTime = endDate.getTimeInMillis();
+        long milliseconds = endTime - startTime;
 
-        int min = (int) ((milliseconds / (1000 * 60)) % 60);
-        int hour = (int) ((milliseconds / (1000 * 60 * 60)) % 24);
-        if (hour == 1) {
-            return hour + " hr";
-        }
-        if (hour < 1) {
+        int days = (int) (milliseconds / (1000*60*60*24));
+        int hours = (int) (milliseconds / (1000*60*60));
+        int min = (int) (milliseconds - (1000*60*60*24*days) - (1000*60*60*hours)) / (1000*60);
+
+
+
+        if (hours < 1) {
             return min + " min";
+        }else{
+            StringBuilder durationText = new StringBuilder();
+            if (hours == 1) {
+                durationText.append(hours + " hr");
+            }else{
+                durationText.append(hours + " hrs");
+            }
+
+            if(min > 30){
+                durationText.append(" " + min + " min");
+            }
+
+
+            return durationText.toString();
         }
-        return hour + " hrs ";
 
     }
 	

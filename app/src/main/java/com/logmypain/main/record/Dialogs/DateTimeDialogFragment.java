@@ -2,7 +2,7 @@ package com.logmypain.main.record.dialogs;
 
 import java.util.Calendar;
 
-import com.logmypain.main.R;
+import com.logmypain.R;
 
 import android.os.Bundle;
 import android.app.AlertDialog;

@@ -1,9 +1,9 @@
-package com.logmypain.utils;
+package com.logmypain.tasks.adapters;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.logmypain.main.R;
+import com.logmypain.R;
 import com.logmypain.utils.Models.Trigger;
 
 import android.content.Context;

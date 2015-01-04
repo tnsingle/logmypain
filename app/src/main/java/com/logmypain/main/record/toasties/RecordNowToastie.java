@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.logmypain.R;
+
 public class RecordNowToastie extends Dialog {
 	public RecordNowToastie(Context context) {
 		super(context);
@@ -22,7 +24,7 @@ public class RecordNowToastie extends Dialog {
                 WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
                         | WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
                         | WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
-		setContentView(com.logmypain.main.R.layout.dialog_record_now);
+		setContentView(R.layout.dialog_record_now);
 		//TextView message = (TextView) findViewById(R.id.dialog_record_now);
 	    
 	    //	message.setText("Migraine recorded for ");
