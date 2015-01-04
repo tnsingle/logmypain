@@ -23,7 +23,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.logmypain.main.record.ModifyRecordActivity"
+            android:name="com.logmypain.main.record.HeadacheRecordFormActivity"
             android:label="@string/title_activity_record_headache_now"
         android:parentActivityName="com.logmypain.main.MainActivity" >
         <!-- Parent activity meta-data to support 4.0 and lower -->

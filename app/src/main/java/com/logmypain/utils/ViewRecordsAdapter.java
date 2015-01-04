@@ -61,7 +61,8 @@ public class ViewRecordsAdapter
                 localView = ((LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE)).inflate(this.layoutResourceId, null);
             }
             localView.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View paramAnonymousView) {
+                @Override
+                public void onClick(View v) {
                     Intent localIntent = new Intent(ViewRecordsAdapter.this.context, HeadacheRecordFormActivity.class);
                     localIntent.putExtra("Record_ID", localHeadache.getId());
                     ViewRecordsAdapter.this.context.startActivity(localIntent);

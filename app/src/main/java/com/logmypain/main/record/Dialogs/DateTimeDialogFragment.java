@@ -57,7 +57,7 @@ public class DateTimeDialogFragment extends DialogFragment {
 	               public void onClick(DialogInterface dialog, int id) {
 	            	   DateTimeDialogFragment.this.getDialog().cancel();
 	               }
-	           });      
+	           });
 	    return builder.create();
 	}
 	

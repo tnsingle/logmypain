@@ -1,6 +1,6 @@
 package com.logmypain.main;
 
-import com.logmypain.main.record.ModifyRecordActivity;
+import com.logmypain.main.record.HeadacheRecordFormActivity;
 import com.logmypain.utils.CalendarUtil;
 import com.logmypain.utils.DatabaseHelper;
 import com.logmypain.utils.HeadacheRecord;
@@ -90,12 +90,12 @@ public class MainActivity extends Activity {
 	}
 	
 	public void createRecord(View view){
-		Intent intent = new Intent(this, ModifyRecordActivity.class);
+		Intent intent = new Intent(this, HeadacheRecordFormActivity.class);
 		startActivity(intent);
 	}
 	
 	public void onClickEdit(View view){
-		Intent intent = new Intent(this, ModifyRecordActivity.class);
+		Intent intent = new Intent(this, HeadacheRecordFormActivity.class);
 		intent.putExtra("Record_ID", Record_ID);
 	    startActivity(intent);
 	}
