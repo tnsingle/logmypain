@@ -17,7 +17,7 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 
-import com.logmypain.main.DateTimeDialogFragment;
+import com.logmypain.main.record.dialogs.*;
 import com.logmypain.main.R;
 import com.logmypain.utils.CalendarUtil;
 import com.logmypain.utils.DatabaseHelper;

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE manifest>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.logmypain.main"
+    package="com.logmypain"
     android:versionCode="1"
-    android:versionName="1.0" >
+    android:versionName="Lychee v1.0" >
 
     <uses-sdk
         android:minSdkVersion="11"

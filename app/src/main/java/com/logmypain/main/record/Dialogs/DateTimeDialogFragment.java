@@ -1,4 +1,4 @@
-package com.logmypain.main.record.Dialogs;
+package com.logmypain.main.record.dialogs;
 
 import java.util.Calendar;
 

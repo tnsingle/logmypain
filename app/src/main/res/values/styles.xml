@@ -543,9 +543,13 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">#ffffffff</item>
     </style>
+    <style name="ModifyFormRow" parent="@style/AppTheme">
+        <item name="android:layout_marginBottom">10.0dip</item>
+    </style>
     <style name="ModifyFormLabel" parent="@style/AppTheme">
         <item name="android:textSize">18.0sp</item>
-        <item name="android:textStyle">bold</item>
+        <!--<item name="android:textStyle">bold</item>-->
+        <item name="android:textAllCaps">true</item>
         <item name="android:textColor">#ff000000</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:layout_width">fill_parent</item>
@@ -562,6 +566,8 @@
     </style>
     <style name="ModifySecondaryInfo" parent="@style/ModifyPrimaryInfo">
         <item name="android:textSize">14.0sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">18.0sp</item>
     </style>
     <style name="EditButton" parent="@style/AppTheme">
         <item name="android:gravity">right</item>
