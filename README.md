@@ -1,6 +1,8 @@
 Log My Pain
 =========
 
+[![DepShield Badge](https://depshield.sonatype.org/badges/owner/repository/depshield.svg)](https://depshield.github.io)
+
 A migraine tracking app for android
 http://www.logmypain.com/
 ![Screens](screens.jpg?raw=true "App Screens")
